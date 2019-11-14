@@ -1,44 +1,36 @@
 // ----------------- general
-var consistency = true; //se TRUE mi indica che i dati in input sono "buoni"
+var dataIsValid = true; //se TRUE mi indica che i dati in input sono "buoni"
 
 // ----------------- recupero user inputs: km da percorrere + età utente
-var age = parseInt(prompt("Inserisci la tua età:", "18"));
-console.log("age: ", age);
-var km = parseInt(prompt("Inserisci i km da percorrere:", "100"));
-var sconto = 1.0; // 1=100% cioè nessuno sconto
+var age = parseInt(prompt("Inserisci la tua età (min.1-max.120):", "18"));
+var km = parseInt(prompt("Inserisci i km da percorrere (1-10000):", "100"));
+var sconto = 1; // 1=100% cioè nessuno sconto
 
 // ----------------- controlli di consistenza sullo user inputs
 if (isNaN(age)) {
     // l'input non è un numero
     alert("ATTENZIONE: l'età deve essere un numero intero, il sistema non può fornire informazioni. Riprova.");
-    consistency = false;
-} else if (age < 1 || age > 150) {
+    dataIsValid = false;
+} else if (age < 1 || age > 120) {
     // l'input è un numero ma non è in un range corretto
     alert("ATTENZIONE: il valore dell'età non è corretto, il sistema non può fornire informazioni. Riprova.");
-    consistency = false;
+    dataIsValid = false;
 }
 
 if (isNaN(km)) {
     // l'input non è un numero
     alert("ATTENZIONE: i km devono essere un numero intero, il sistema non può fornire informazioni. Riprova.");
-    consistency = false;
-} else if (km < 1) {
-    // l'input è un numero ma è negativo
-    alert("ATTENZIONE: i km da percorrere non possono essere negativi, il sistema non può fornire informazioni. Riprova.");
-    consistency = false;
+    dataIsValid = false;
+} else if (km < 1 || km > 10000) {
+    // l'input è un numero ma è negativo o troppo grande
+    alert("ATTENZIONE: i km da percorrere non sono validi, il sistema non può fornire informazioni. Riprova.");
+    dataIsValid = false;
 }
 
 
-// nascondo il panello con le informazioni di acquisto se non ho dati consistenti
-if (!consistency) {
-    // non eseguo nessun calcolo poichè non ho dati consistenti
-    // nascondo pannello informazioni di acquisto e propongo all'utente
-    // di ripartire (bottone "Ricalcola")
-    document.getElementById("buy-panel").setAttribute("class", "hide-buy-panel");
-} else {
+if (dataIsValid) {
     // controlli di consistenza superati, posso elaborare
-
-    // ----------------- verifica applicazione scontistica
+    // ----------------- verifica se devo applicare sconti
     if (age < 18) {
         // 20% di sconto per gli under 18
         sconto = 0.8;
@@ -67,4 +59,10 @@ if (!consistency) {
     }
 
     document.getElementById("price").innerHTML = price;
+
+} else {
+    // ----------------- dati inconsistenti
+    // non eseguo nessun calcolo poichè non ho dati validi
+    // nascondo pannello informazioni di acquisto
+    document.getElementById("buy-panel").setAttribute("class", "hide-buy-panel");
 }

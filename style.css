@@ -22,6 +22,14 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    padding-bottom: 10px;
+}
+
+p {
+    font-weight: bolder;
+}
+
 a {
     line-height: 30px;
     color: gray;
@@ -49,15 +57,19 @@ a:hover {
     margin-bottom: 30px;
 }
 
+#buy-panel div {
+    padding-bottom: 10px;
+}
+
 .hide-buy-panel {
     display: none;
 }
 
-#ticket-price {
+#price {
     background: #ded9d9;
     color: black;
     border-radius: 10px;
-    padding: 10px;
+    padding: 0 10px;
     font-family: 'Alfa Slab One', cursive;
 }
 
