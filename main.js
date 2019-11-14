@@ -2,18 +2,29 @@
 var consistency = true; //se TRUE mi indica che i dati in input sono "buoni"
 
 // ----------------- recupero user inputs: km da percorrere + età utente
-var age = prompt("Inserisci la tua età:", "18");
-var km = prompt("Inserisci i km da percorrere:", "100");
+var age = parseInt(prompt("Inserisci la tua età:", "18"));
+console.log("age: ", age);
+var km = parseInt(prompt("Inserisci i km da percorrere:", "100"));
 var sconto = 1.0; // 1=100% cioè nessuno sconto
 
 // ----------------- controlli di consistenza sullo user inputs
-if (age < 1 || age > 150) {
-    alert("ATTENZIONE: l'età non è corretta, il sistema non può fornire informazioni. Riprova.");
+if (isNaN(age)) {
+    // l'input non è un numero
+    alert("ATTENZIONE: l'età deve essere un numero intero, il sistema non può fornire informazioni. Riprova.");
+    consistency = false;
+} else if (age < 1 || age > 150) {
+    // l'input è un numero ma non è in un range corretto
+    alert("ATTENZIONE: il valore dell'età non è corretto, il sistema non può fornire informazioni. Riprova.");
     consistency = false;
 }
 
-if (km < 1) {
-    alert("ATTENZIONE: i km da percorrere non sono corretti, il sistema non può fornire informazioni. Riprova.");
+if (isNaN(km)) {
+    // l'input non è un numero
+    alert("ATTENZIONE: i km devono essere un numero intero, il sistema non può fornire informazioni. Riprova.");
+    consistency = false;
+} else if (km < 1) {
+    // l'input è un numero ma è negativo
+    alert("ATTENZIONE: i km da percorrere non possono essere negativi, il sistema non può fornire informazioni. Riprova.");
     consistency = false;
 }
 
