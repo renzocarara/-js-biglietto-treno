@@ -45,16 +45,12 @@ a:hover {
 
 #buy-panel {
     border: 1px solid gray;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
     padding: 10px;
     margin-bottom: 30px;
 }
 
 .hide-buy-panel {
-    visibility: hidden;
+    display: none;
 }
 
 #ticket-price {
