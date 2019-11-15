@@ -7,23 +7,15 @@ var km = parseInt(prompt("Inserisci i km da percorrere (1-10000):", "100"));
 var sconto = 1; // 1=100% cioè nessuno sconto
 
 // ----------------- controlli di consistenza sullo user inputs
-if (isNaN(age)) {
-    // l'input non è un numero
-    alert("ATTENZIONE: l'età deve essere un numero intero, il sistema non può fornire informazioni. Riprova.");
-    dataIsValid = false;
-} else if (age < 1 || age > 120) {
-    // l'input è un numero ma non è in un range corretto
-    alert("ATTENZIONE: il valore dell'età non è corretto, il sistema non può fornire informazioni. Riprova.");
+if (isNaN(age) || age < 1 || age > 120) {
+    // l'input non è un numero o è fuori range
+    alert("ATTENZIONE: l'età deve essere un numero intero tra 1 e 120, il sistema non può fornire informazioni. Riprova.");
     dataIsValid = false;
 }
 
-if (isNaN(km)) {
-    // l'input non è un numero
-    alert("ATTENZIONE: i km devono essere un numero intero, il sistema non può fornire informazioni. Riprova.");
-    dataIsValid = false;
-} else if (km < 1 || km > 10000) {
-    // l'input è un numero ma è negativo o troppo grande
-    alert("ATTENZIONE: i km da percorrere non sono validi, il sistema non può fornire informazioni. Riprova.");
+if (isNaN(km) || km < 1 || km > 10000) {
+    // l'input non è un numero o è fuori range
+    alert("ATTENZIONE: i km devono essere un numero intero tra 1 e 10000, il sistema non può fornire informazioni. Riprova.");
     dataIsValid = false;
 }
 
