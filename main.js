@@ -50,12 +50,12 @@ if (dataIsValid) {
     // se non c'e sconto visualizzo la stringa "nessuno" altrimenti visualizzo lo sconto (un numerico)
     if (sconto == 1) {
         // nessuno sconto da applicare per il cliente
-        document.getElementById("discount").innerHTML = "";
+        document.getElementById("x100").innerHTML = ""; // elimino il simbolo "%"
         document.getElementById("discount").innerHTML = "nessuno";
     } else {
         // c'è uno sconto da applicare
         // uso Math.round() per evitare di visualizzare 19.999999.. anzichè 20
-        document.getElementById("discount").innerHTML = Math.round((1 - sconto) * 100) + "%";
+        document.getElementById("discount").innerHTML = Math.round((1 - sconto) * 100);
     }
 
     document.getElementById("price").innerHTML = price;
